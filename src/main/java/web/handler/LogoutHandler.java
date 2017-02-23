@@ -1,6 +1,5 @@
 package web.handler;
 
-import domain.model.Person;
 import service.ChatService;
 import web.Action;
 import web.ActionHandler;
@@ -10,17 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Action(value = "index", requiresLoggedIn = true)
-public class IndexHandler extends ActionHandler {
+@Action(value = "logout", requiresLoggedIn = true)
+public class LogoutHandler extends ActionHandler {
 
-    public IndexHandler(ChatService chatService) {
+    public LogoutHandler(ChatService chatService) {
         super(chatService);
     }
 
+    @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Person person = (Person) request.getSession().getAttribute("person");
-        request.setAttribute("person", person);
-        forward(request, response, "index.jsp");
+
+        request.getSession().invalidate();
+        redirect(response, "Controller?action=requestLogin");
+
     }
 
 }

@@ -1,24 +1,29 @@
 package domain.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
 
-    private String name;
+    private String username;
     private String password;
-    private Status status;
+    private String status;
 
-    public Person(String name, String password) {
-        setName(name);
+    private List<Person> friends = new ArrayList<>();
+
+    public Person(String username, String password) {
+        setUsername(username);
         setPassword(password);
-        status = Status.OFFLINE;
+        status = "Offline";
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    private void setName(String name) {
-        if(name == null || name.trim().isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
-        this.name = name;
+    private void setUsername(String username) {
+        if(username == null || username.trim().isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
+        this.username = username;
     }
 
     public String getPassword() {
@@ -33,12 +38,23 @@ public class Person {
         return this.password.equals(password);
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void addFriend(Person person) {
+        if(person == null) throw new IllegalArgumentException("Person cannot be empty");
+        if(person.equals(this)) throw new IllegalArgumentException("Cannot add yourself as a friend");
+        if(friends.contains(person)) throw new IllegalArgumentException(person.getUsername() + " is already a friend");
+        friends.add(person);
+    }
+
+    public List<Person> getFriends() {
+        return new ArrayList<>(friends);
     }
 
     @Override
@@ -48,12 +64,12 @@ public class Person {
 
         Person person = (Person) o;
 
-        return name.equals(person.name);
+        return username.equals(person.username);
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return username.hashCode();
     }
 
 }

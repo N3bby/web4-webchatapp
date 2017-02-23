@@ -1,8 +1,9 @@
 package web;
 
+import service.ChatService;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,13 +11,15 @@ import java.io.IOException;
 
 public class Controller extends HttpServlet {
 
+    private ChatService chatService;
     private HandlerFactory handlerFactory;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        handlerFactory = new HandlerFactory();
+        chatService = new ChatService();
+        handlerFactory = new HandlerFactory(chatService);
 
     }
 

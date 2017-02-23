@@ -9,16 +9,22 @@ public class PersonRepositoryInMemory implements PersonRepository {
 
     private List<Person> persons = new ArrayList<>();
 
+    public PersonRepositoryInMemory() {
+        persons.add(new Person("leviv", "123"));
+        persons.add(new Person("somn", "123"));
+        get("leviv").addFriend(get("somn"));
+    }
+
     @Override
     public void add(Person person) {
         if (persons.contains(person))
-            throw new IllegalArgumentException("Person " + person.getName() + " already exists!");
+            throw new IllegalArgumentException("Person " + person.getUsername() + " already exists!");
         persons.add(person);
     }
 
     @Override
-    public Person get(String name) {
-        return persons.stream().filter(p -> p.getName() == name).findAny().orElse(null);
+    public Person get(String username) {
+        return persons.stream().filter(p -> p.getUsername().equals(username)).findAny().orElse(null);
     }
 
     @Override

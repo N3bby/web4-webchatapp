@@ -1,0 +1,190 @@
+/*CLEAN UP THIS CSS WTH*/
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+#loginBackground {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: -20px;
+    background-image: url("/resources/images/bg-login2.jpg");
+    background-size: cover;
+    filter: blur(10px) grayscale(10%) brightness(70%);
+}
+
+#loginPanel {
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 25%;
+    max-width: 800px;
+    max-height: 200px;
+    /*transform: translateY(-50%);*/
+}
+
+#loginPanel form {
+    padding: 30px;
+    background-color: rgba(60, 60, 144, 0.85);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#loginPanel input {
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    font-size: 120%;
+    font-weight: 600;
+    display: block !important;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#loginPanel input:focus {
+    outline: none;
+}
+
+#loginPanel input:last-child {
+    margin-bottom: auto;
+}
+
+#loginPanel input[type='submit'] {
+    margin-top: 30px;
+    width: 75%;
+}
+
+ul.errors {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+ul.errors li {
+    text-align: center;
+    color: orangered;
+    font-weight: 600;
+    list-style: none;
+    list-style-position: outside;
+}
+
+#leftPanel {
+    position: fixed;
+    left: 0;
+    top:0;
+    bottom: 0;
+    min-width: 100px;
+    width: 20%;
+    background-color: rgb(60, 60, 144);
+    box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+}
+
+#statusPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    position: fixed;
+    top:0;
+    min-width: 100px;
+    width: 20%;
+    height: 20%;
+    background-color: rgb(45, 45, 108);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    font-size: 200%;
+    padding: 20px;
+    box-sizing: border-box;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+}
+
+#statusPanel p {
+    text-align: center;
+    margin: 0;
+    height: 50%;
+}
+
+#statusSelect {
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    font-size:70%;
+    background-color: rgb(34, 34, 81);
+}
+
+#friendPanel {
+    position: fixed;
+    top:20%;
+    min-width: 100px;
+    width: 20%;
+    bottom: 15%;
+    padding: 20px;
+}
+
+#friendPanel p {
+    margin: 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 150%;
+    font-weight: 600;
+}
+
+#friendPanel ul {
+    padding: 0;
+}
+
+#friendPanel li {
+    list-style: none;
+    list-style-position: inside;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-size: 110%;
+}
+
+#addFriendPanel {
+    position: fixed;
+    top:85%;
+    width: 20%;
+    min-width: 100px;
+    bottom: 0;
+    background-color: rgb(45, 45, 108);
+    box-shadow: 0 -5px 5px rgba(0,0,0,0.1);
+}
+
+#addFriendPanel form {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px;
+}
+
+#addFriendPanel form input {
+    height: 45%;
+    display: block;
+    width: 100%;;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    font-weight: 600;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#addFriendPanel form input[type='text'] {
+    padding: 5px;
+}
+
+#addFriendPanel form input:last-child {
+    margin-bottom: 0;
+}
