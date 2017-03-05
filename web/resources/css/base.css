@@ -81,10 +81,12 @@ ul.errors li {
     left: 0;
     top:0;
     bottom: 0;
-    min-width: 100px;
-    width: 20%;
     background-color: rgb(60, 60, 144);
     box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+}
+
+#leftPanel, #statusPanel, #friendPanel, #addFriendPanel {
+    width: 250px;
 }
 
 #statusPanel {
@@ -95,8 +97,6 @@ ul.errors li {
     z-index: 20;
     position: fixed;
     top:0;
-    min-width: 100px;
-    width: 20%;
     height: 20%;
     background-color: rgb(45, 45, 108);
     box-shadow: 0 5px 5px rgba(0,0,0,0.1);
@@ -128,8 +128,6 @@ ul.errors li {
 #friendPanel {
     position: fixed;
     top:20%;
-    min-width: 100px;
-    width: 20%;
     bottom: 15%;
     padding: 20px;
 }
@@ -156,8 +154,6 @@ ul.errors li {
 #addFriendPanel {
     position: fixed;
     top:85%;
-    width: 20%;
-    min-width: 100px;
     bottom: 0;
     background-color: rgb(45, 45, 108);
     box-shadow: 0 -5px 5px rgba(0,0,0,0.1);

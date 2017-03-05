@@ -1,12 +1,16 @@
 package domain.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
 
+    @Expose
     private String username;
     private String password;
+    @Expose
     private String status;
 
     private List<Person> friends = new ArrayList<>();

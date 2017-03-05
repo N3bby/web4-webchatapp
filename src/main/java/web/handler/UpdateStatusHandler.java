@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Action(value = "logout", requiresLoggedIn = true)
-public class LogoutHandler extends ActionHandler {
+@Action(value = "updateStatus", requiresLoggedIn = true)
+public class UpdateStatusHandler extends ActionHandler {
 
-    public LogoutHandler(ChatService chatService) {
+    public UpdateStatusHandler(ChatService chatService) {
         super(chatService);
     }
 
@@ -21,10 +21,7 @@ public class LogoutHandler extends ActionHandler {
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Person person = (Person) request.getSession().getAttribute("person");
-        person.setStatus("Offline");
-
-        request.getSession().invalidate();
-        redirect(response, "Controller?action=requestLogin");
+        person.setStatus(request.getParameter("status"));
 
     }
 

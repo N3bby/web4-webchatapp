@@ -4,6 +4,7 @@
 <head>
     <title>Chat</title>
     <link rel="stylesheet" type="text/css" href="resources/css/base.css">
+    <script src="resources/js/index.js"></script>
 </head>
 <body>
 
@@ -19,10 +20,7 @@
         </div>
         <div id="friendPanel">
             <p>Friends</p>
-            <ul>
-                <c:forEach var="friend" items="${person.friends}">
-                    <li>${friend.username} - ${friend.status}</li>
-                </c:forEach>
+            <ul id="friends">
             </ul>
         </div>
         <div id="addFriendPanel">
