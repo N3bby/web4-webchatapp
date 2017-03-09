@@ -16,6 +16,7 @@
                 <option value="Online" <c:if test="${person.status eq 'Online'}">selected</c:if>>Online</option>
                 <option value="Busy" <c:if test="${person.status eq 'Busy'}">selected</c:if>>Busy</option>
                 <option value="Offline" <c:if test="${person.status eq 'Offline'}">selected</c:if>>Offline</option>
+                <option value="Custom...">Custom...</option>
             </select>
         </div>
         <div id="friendPanel">
