@@ -13,6 +13,10 @@
         <div id="statusPanel">
             <p>${person.username}</p>
             <select id="statusSelect">
+                <%--This code sucks--%>
+                <c:if test="${person.status ne 'Online' && person.status ne 'Busy' && person.status ne 'Offline'}">
+                    <option value="temp" disabled selected>${person.status}</option>
+                </c:if>
                 <option value="Online" <c:if test="${person.status eq 'Online'}">selected</c:if>>Online</option>
                 <option value="Busy" <c:if test="${person.status eq 'Busy'}">selected</c:if>>Busy</option>
                 <option value="Offline" <c:if test="${person.status eq 'Offline'}">selected</c:if>>Offline</option>
@@ -25,9 +29,8 @@
             </ul>
         </div>
         <div id="addFriendPanel">
-            <form action="Controller" method="post">
-                <input type="hidden" name="action" value="addFriend">
-                <input type="text" name="username" placeholder="Username">
+            <form id="addFriendForm" action="Controller" method="post">
+                <input id="addFriendForm_user" type="text" name="username" placeholder="Username">
                 <input type="submit" value="Add Friend">
             </form>
         </div>

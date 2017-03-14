@@ -4,6 +4,7 @@ window.onload = function () {
     setInterval(pollFriends, 2000);
 
     document.getElementById("statusSelect").onchange = updateStatus;
+    document.getElementById("addFriendForm").onsubmit = addFriend;
 
 };
 
@@ -68,6 +69,30 @@ function updateStatus() {
     var request = new XMLHttpRequest();
     request.open("POST", "Controller?action=updateStatus", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.overrideMimeType("text/plain");
     request.send("status=" + status);
+
+}
+
+function addFriend(evt) {
+
+    evt.preventDefault();
+
+    var textField = document.getElementById("addFriendForm_user");
+    var friendUsername = textField.value;
+    textField.value = ""; //Reset text field
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "Controller?action=addFriend", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.overrideMimeType("text/plain");
+    request.onreadystatechange = function () { //Show errors in alert window
+        if(request.readyState === 4) {
+            if(request.responseText !== "") {
+                window.alert(request.responseText);
+            }
+        }
+    };
+    request.send("username=" + friendUsername);
 
 }

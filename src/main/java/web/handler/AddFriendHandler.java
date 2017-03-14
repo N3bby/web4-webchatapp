@@ -30,10 +30,12 @@ public class AddFriendHandler extends ActionHandler {
 
         try {
             person.addFriend(friend);
-        } catch (Exception e) {
-            //TODO add friend exception handling
-            throw new RuntimeException(e);
+        } catch (NullPointerException e) {
+            response.getWriter().write("User does not exist");
+        } catch (IllegalArgumentException e) {
+            response.getWriter().write("User is already a friend");
         }
+        response.getWriter().flush();
 
     }
 

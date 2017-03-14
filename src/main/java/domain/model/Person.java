@@ -51,7 +51,7 @@ public class Person {
     }
 
     public void addFriend(Person person) {
-        if(person == null) throw new IllegalArgumentException("Person cannot be empty");
+        if(person == null) throw new NullPointerException("Person cannot be empty");
         if(person.equals(this)) throw new IllegalArgumentException("Cannot add yourself as a friend");
         if(friends.contains(person)) throw new IllegalArgumentException(person.getUsername() + " is already a friend");
         friends.add(person);
