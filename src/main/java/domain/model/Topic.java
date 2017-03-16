@@ -6,14 +6,14 @@ import java.util.List;
 public class Topic {
 
     private String name;
-    private List<String> messageIds;
+    private List<Message> messageIds;
 
     public Topic(String name) {
         this.name = name;
-        this.messageIds = new ArrayList<String>();
+        this.messageIds = new ArrayList<Message>();
     }
 
-    public Topic(String name, List<String> messageIds) {
+    public Topic(String name, List<Message> messageIds) {
         setName(name);
         setMessageIds(messageIds);
     }
@@ -26,15 +26,15 @@ public class Topic {
         this.name = name;
     }
 
-    public List<String> getMessageIds() {
+    public List<Message> getMessageIds() {
         return new ArrayList<>(messageIds);
     }
 
-    public void setMessageIds(List<String> messageIds) {
+    public void setMessageIds(List<Message> messageIds) {
         this.messageIds = messageIds;
     }
 
-    public void addMessage(String message) {
+    public void addMessage(Message message) {
         messageIds.add(message);
     }
 
