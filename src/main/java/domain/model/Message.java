@@ -7,7 +7,11 @@ public class Message {
     private String message;
 
     public Message(String id, Person person, String message) {
+        this(person, message);
         setId(id);
+    }
+
+    public Message(Person person, String message) {
         setPerson(person);
         setMessage(message);
     }

@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class TopicRepositoryInMemory implements TopicRepository {
 
-    Map<String, Topic> topicMap = new HashMap<>();
+    private Map<String, Topic> topicMap = new HashMap<>();
 
     @Override
     public void add(Topic topic) {

@@ -3,6 +3,8 @@
 body {
     font-family: sans-serif;
     margin: 0;
+    background-color: rgb(225, 235, 240);
+    overflow: hidden;
 }
 
 #loginBackground {
@@ -19,8 +21,8 @@ body {
 
 #loginPanel {
     position: fixed;
-    top:50%;
-    left:50%;
+    top: 50%;
+    left: 50%;
     transform: translateX(-50%) translateY(-50%);
     min-width: 300px;
     max-height: 200px;
@@ -79,10 +81,10 @@ ul.errors li {
 #leftPanel {
     position: fixed;
     left: 0;
-    top:0;
+    top: 0;
     bottom: 0;
     background-color: rgb(60, 60, 144);
-    box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 #leftPanel, #statusPanel, #friendPanel, #addFriendPanel {
@@ -96,14 +98,14 @@ ul.errors li {
     justify-content: center;
     z-index: 20;
     position: fixed;
-    top:0;
+    top: 0;
     height: 20%;
     background-color: rgb(45, 45, 108);
-    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
     font-size: 200%;
     padding: 20px;
     box-sizing: border-box;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
 }
 
@@ -119,22 +121,22 @@ ul.errors li {
     border-radius: 5px;
     border: none;
     outline: none;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
-    font-size:70%;
+    font-size: 70%;
     background-color: rgb(34, 34, 81);
 }
 
 #friendPanel {
     position: fixed;
-    top:20%;
+    top: 20%;
     bottom: 15%;
     padding: 20px;
 }
 
 #friendPanel p {
     margin: 0;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 150%;
     font-weight: 600;
 }
@@ -146,17 +148,17 @@ ul.errors li {
 #friendPanel li {
     list-style: none;
     list-style-position: inside;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
     font-size: 110%;
 }
 
 #addFriendPanel {
     position: fixed;
-    top:85%;
+    top: 85%;
     bottom: 0;
     background-color: rgb(45, 45, 108);
-    box-shadow: 0 -5px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
 }
 
 #addFriendPanel form {
@@ -183,4 +185,115 @@ ul.errors li {
 
 #addFriendPanel form input:last-child {
     margin-bottom: 0;
+}
+
+#indexPanel {
+    margin-left: 250px;
+    text-align: center;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
+
+.topic {
+    display: inline-block;
+    text-align: center;
+    opacity: 0.3;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    padding: 20px 40px;
+}
+
+.topic:first-child {
+    margin-left: 0;
+}
+
+.topic:hover {
+    border-radius: 5%;
+    box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.topic p {
+    font-size: 150%;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.img_topic {
+    width: 200px;
+    height: 200px;
+    background: url("../images/topic_icon.png") center;
+    background-size: contain;
+}
+
+#topicPanel {
+    margin-left: 250px;
+    margin-bottom: 70px;
+    height: calc(100% - 70px);
+}
+
+.messagesPanel {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow-y: scroll;
+}
+
+#homeButton {
+    display: none; /* Disabled for now... */
+    position: fixed;
+    text-decoration: none;
+    color: rgba(0,0,0,0.3);
+    font-size: 500%;
+    font-weight: 600;
+    left: 260px;
+    top:10px;
+}
+
+.message {
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 125%;
+    color: rgba(0,0,0,0.4);
+}
+
+.message_sender {
+    font-weight: 600;
+}
+
+.addMessagePanel {
+    position: fixed;
+    bottom: 0;
+    left: 250px;
+    right: 0;
+    height: 40px;
+    padding: 15px;
+    line-height: 45px;
+    background-color: rgb(75, 75, 180);
+    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#addMessageForm_message,
+#addMessageForm_send {
+    display: inline-block;
+    font-size: 125%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#addMessageForm_message {
+    padding: 10px;
+    width: 80%;
+}
+
+#addMessageForm_send {
+    width: calc(100% - 80% - 30px);
+    margin-left: 15px;
 }

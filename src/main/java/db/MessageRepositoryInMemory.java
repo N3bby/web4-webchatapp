@@ -14,7 +14,7 @@ public class MessageRepositoryInMemory implements MessageRepository {
     Map<String, Message> messageMap = new HashMap<>();
 
     @Override
-    public void add(Message message) {
+    public String add(Message message) {
         if(message.getId() == null) {
             int length = 16;
             String randomId = getRandomId(length);
@@ -22,6 +22,7 @@ public class MessageRepositoryInMemory implements MessageRepository {
             message.setId(randomId);
         }
         messageMap.put(message.getId(), message);
+        return message.getId();
     }
 
     private String getRandomId(int length) {
@@ -47,7 +48,7 @@ public class MessageRepositoryInMemory implements MessageRepository {
 
     @Override
     public List<Message> getAll(List<String> messageIds) {
-        return messageMap.values().stream()
+        return messageIds.stream()
                 .map(id -> messageMap.get(id))
                 .collect(Collectors.toList());
     }

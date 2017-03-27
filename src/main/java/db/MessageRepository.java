@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface MessageRepository {
 
-    void add(Message message);
+    //Returns new id if applicable
+    String add(Message message);
 
     Message get(String messageId);
 
