@@ -229,15 +229,16 @@ ul.errors li {
 }
 
 #topicPanel {
-    margin-left: 250px;
-    margin-bottom: 70px;
-    height: calc(100% - 70px);
+    position: fixed;
+    left: 250px;
+    bottom: 70px;
+    top: 0;
+    right: 0;
 }
 
 .messagesPanel {
-    position: fixed;
     width: 100%;
-    height: calc(100% - 70px);
+    height: 100%;
     overflow-y: scroll;
 }
 

@@ -1,9 +1,11 @@
-window.onload = function () {
+$(document).ready( function () {
+
+    console.log("chat.js");
 
     openSocket();
     document.getElementById("addMessageForm").onsubmit = sendMessage;
 
-};
+});
 
 var chatSocket;
 

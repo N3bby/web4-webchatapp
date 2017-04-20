@@ -3,7 +3,10 @@ package web;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import domain.model.Message;
 import domain.model.Person;
+import domain.model.Topic;
+import service.ChatService;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
@@ -36,13 +39,18 @@ public class ChatSocket {
         chatMessage.setMessage(message);
         //Set the user of the message to the user of the Session
         chatMessage.setUser(((Person) session.getUserProperties().get("person")).getUsername());
+        //Add message to repository
+        ChatService service = ChatService.getInstance();
+        Topic topic = service.getTopic((String) session.getUserProperties().get("topic"));
+        Message domainMessage = new Message((Person) session.getUserProperties().get("person"), message);
+        service.addMessage(topic, domainMessage);
         //Forward message to clients
         forwardMessage((String) session.getUserProperties().get("topic"), chatMessage);
     }
 
     @OnClose
     public void onClose(Session session) {
-        //Remove message from Session list
+        //Remove session from Session list
         sessions.remove(session);
     }
 

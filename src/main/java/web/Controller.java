@@ -18,7 +18,7 @@ public class Controller extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        chatService = new ChatService();
+        chatService = ChatService.getInstance();
         handlerFactory = new HandlerFactory(chatService);
 
     }

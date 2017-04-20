@@ -13,7 +13,13 @@ public class ChatService {
     private TopicRepository topicRepository = new TopicRepositoryInMemory();
     private MessageRepository messageRepository = new MessageRepositoryInMemory();
 
-    public ChatService() {
+    private static ChatService instance = new ChatService();
+
+    public static ChatService getInstance() {
+        return instance;
+    }
+
+    private ChatService() {
         Topic topic = new Topic("Topic 1");
         topicRepository.add(topic);
         topicRepository.add(new Topic("Topic 2"));

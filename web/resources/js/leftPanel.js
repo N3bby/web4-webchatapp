@@ -1,4 +1,6 @@
-window.onload = function () {
+$(document).ready( function () {
+
+    console.log("leftPanel.js");
 
     pollFriends();
     setInterval(pollFriends, 2000);
@@ -6,7 +8,7 @@ window.onload = function () {
     document.getElementById("statusSelect").onchange = updateStatus;
     document.getElementById("addFriendForm").onsubmit = addFriend;
 
-};
+});
 
 function pollFriends() {
 

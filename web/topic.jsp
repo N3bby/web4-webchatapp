@@ -4,6 +4,7 @@
 <head>
     <title>Chat - ${topic.name}</title>
     <link rel="stylesheet" type="text/css" href="resources/css/base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="resources/js/leftPanel.js"></script>
     <script src="resources/js/chat.js"></script>
     <div id="topicIdentifier" style="display: none;">${topic.name}</div>
@@ -24,7 +25,7 @@
     </div>
     <div class="addMessagePanel">
         <form id="addMessageForm" action="Controller" method="post">
-            <input id="addMessageForm_message" type="text" name="message" placeholder="Message" autocomplete="false">
+            <input id="addMessageForm_message" type="text" name="message" placeholder="Message" autocomplete="off">
             <input id="addMessageForm_send" type="submit" value="Send">
         </form>
     </div>
