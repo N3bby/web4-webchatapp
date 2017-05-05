@@ -2,11 +2,11 @@ package com.razacx.domain.model;
 
 import com.google.gson.annotations.Expose;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 public class Message {
@@ -15,10 +15,15 @@ public class Message {
     @GeneratedValue
     private Long id;
 
+    @NotNull    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Expose
+    private Date date;
+    
     @NotNull
     @Expose
     private Person from;
-
+    
     @NotNull
     @Size(min = 3, max = 255)
     @Expose
@@ -28,6 +33,7 @@ public class Message {
     }
 
     public Message(Person from, String message) {
+        setDate(Calendar.getInstance().getTime());
         setFrom(from);
         setMessage(message);
     }
@@ -38,6 +44,14 @@ public class Message {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Person getFrom() {

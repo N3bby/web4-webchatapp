@@ -26,10 +26,9 @@ public class TopicHandler extends ActionHandler {
 
         String topicStr = request.getParameter("topic");
         Topic topic = getServiceHolder().getTopicService().getTopicByName(topicStr);
+        
         request.setAttribute("topic", topic);
-
-        //TODO Refactor
-//        request.setAttribute("messages", getServiceHolder().getMessageService().getMessagesById(topic.getMessageIds()));
+        request.setAttribute("messages", topic.getMessages());
 
         forward(request, response, "topic.jsp");
     }

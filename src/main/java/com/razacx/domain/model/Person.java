@@ -10,16 +10,16 @@ import java.util.List;
 @Entity
 public class Person {
 
-    @Expose
     @Id
     @NotNull
+    @Expose
     private String username;
 
     @NotNull
     private String password;
 
-    @Expose
     @NotNull
+    @Expose
     private String status;
 
     @ElementCollection(targetClass = Person.class, fetch = FetchType.EAGER)
