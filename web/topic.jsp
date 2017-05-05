@@ -18,7 +18,7 @@
     <div class="messagesPanel">
         <c:forEach var="message" items="${messages}">
             <div class="message">
-                <span class="message_sender">${message.person.username}</span> -
+                <span class="message_sender">${message.from.username}</span> -
                 <span class="message_content">${message.message}</span>
             </div>
         </c:forEach>
