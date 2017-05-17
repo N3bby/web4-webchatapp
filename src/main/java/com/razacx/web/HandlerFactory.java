@@ -12,7 +12,7 @@ public class HandlerFactory {
     private Map<String, ActionHandler> handlers = new HashMap<>();
 
     public HandlerFactory(DomainServiceHolder serviceHolder) {
-        Reflections reflections = new Reflections("web");
+        Reflections reflections = new Reflections("com.razacx.web.handler");
         Set<Class<?>> handlerClasses = reflections.getTypesAnnotatedWith(Action.class);        
         for (Class<?> c : handlerClasses) {
             try {
