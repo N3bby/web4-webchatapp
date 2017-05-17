@@ -1,9 +1,6 @@
 package com.razacx.domain.model;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -12,7 +9,7 @@ public class Topic {
     @Id
     private String name;
 
-    @ElementCollection(targetClass = Message.class, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Message.class)
     private List<Message> messages;
 
     public Topic() {

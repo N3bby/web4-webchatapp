@@ -39,7 +39,6 @@ public class MessageDomainService implements IMessageService {
         messageRepository.update(message);
     }
 
-    //TODO Write tests!!!!
     @Override
     public List<PrivateMessage> getPrivateMessagesBetween(Person p1, Person p2) {
 

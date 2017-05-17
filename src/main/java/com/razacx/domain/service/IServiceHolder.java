@@ -5,5 +5,7 @@ public interface IServiceHolder {
     IMessageService getMessageService();
     IPersonService getPersonService();
     ITopicService getTopicService();
+    
+    void destroy();
 
 }

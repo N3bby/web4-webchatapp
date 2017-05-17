@@ -22,6 +22,7 @@ public class Message {
     
     @NotNull
     @Expose
+    @ManyToOne
     private Person from;
     
     @NotNull

@@ -13,7 +13,7 @@ public class HandlerFactory {
 
     public HandlerFactory(DomainServiceHolder serviceHolder) {
         Reflections reflections = new Reflections("web");
-        Set<Class<?>> handlerClasses = reflections.getTypesAnnotatedWith(Action.class);
+        Set<Class<?>> handlerClasses = reflections.getTypesAnnotatedWith(Action.class);        
         for (Class<?> c : handlerClasses) {
             try {
                 ActionHandler handler = (ActionHandler) c.getConstructor(DomainServiceHolder.class).newInstance(serviceHolder);

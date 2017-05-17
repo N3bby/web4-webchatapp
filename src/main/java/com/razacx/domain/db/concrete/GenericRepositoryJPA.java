@@ -26,7 +26,7 @@ public class GenericRepositoryJPA<T> implements IGenericRepository<T> {
     public GenericRepositoryJPA(Class<T> entityClass, String persistenceUnit) {
 
         this.entityClass = entityClass;
-        emf = Persistence.createEntityManagerFactory(persistenceUnit);
+        if(emf == null || !emf.isOpen()) emf = Persistence.createEntityManagerFactory(persistenceUnit);
 
     }
 

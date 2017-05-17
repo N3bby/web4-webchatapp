@@ -32,7 +32,7 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
         String action = request.getParameter("action");
         if (action == null || action.trim().isEmpty()) action = "index";
 
@@ -40,4 +40,9 @@ public class Controller extends HttpServlet {
 
     }
 
+    @Override
+    public void destroy() {
+        serviceHolder.destroy();
+    }
+    
 }

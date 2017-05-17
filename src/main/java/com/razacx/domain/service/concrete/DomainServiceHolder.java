@@ -9,9 +9,16 @@ import java.util.Properties;
 
 public class DomainServiceHolder implements IServiceHolder {
 
-    private static final DomainServiceHolder instance = new DomainServiceHolder(DomainServiceHolder.getDefaultProperties());
+    private static DomainServiceHolder instance;
 
     public static DomainServiceHolder getInstance() {
+                
+        if(instance == null) {
+            synchronized (DomainServiceHolder.class) {
+                instance = new DomainServiceHolder(DomainServiceHolder.getDefaultProperties());
+            }
+        }
+        
         return instance;
     }
 
@@ -44,6 +51,13 @@ public class DomainServiceHolder implements IServiceHolder {
     @Override
     public ITopicService getTopicService() {
         return topicService;
+    }
+
+    @Override
+    public void destroy() {
+        messageService.close();
+        personService.close();
+        topicService.close();
     }
 
 }

@@ -22,8 +22,11 @@ public class Person {
     @Expose
     private String status;
 
-    @ElementCollection(targetClass = Person.class, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Person.class)
     private List<Person> friends = new ArrayList<>();
+
+    public Person() {
+    }
 
     public Person(String username, String password) {
         setUsername(username);
