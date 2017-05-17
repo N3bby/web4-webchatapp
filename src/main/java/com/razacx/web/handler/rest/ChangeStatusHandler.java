@@ -1,4 +1,4 @@
-package com.razacx.web.handler;
+package com.razacx.web.handler.rest;
 
 import com.razacx.domain.model.Person;
 import com.razacx.domain.service.concrete.DomainServiceHolder;
@@ -10,18 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Action(value = "index", requiresLoggedIn = true)
-public class IndexHandler extends ActionHandler {
+@Action(value = "changeStatus", requiresLoggedIn = true)
+public class ChangeStatusHandler extends ActionHandler {
 
-    public IndexHandler(DomainServiceHolder serviceHolder) {
+    public ChangeStatusHandler(DomainServiceHolder serviceHolder) {
         super(serviceHolder);
     }
 
+    @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Person person = (Person) request.getSession().getAttribute("person");
-        request.setAttribute("person", person);
-        request.setAttribute("topics", getServiceHolder().getTopicService().getAllTopics());
-        forward(request, response, "index.jsp");
+        if (person == null) {
+            redirect(response, "Controller?action=requestLogin");
+        }
+
+        String status = request.getParameter("status");
+
+        try {
+            person.setStatus(status);
+        } catch (Exception e) {
+            //TODO set status error handling
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

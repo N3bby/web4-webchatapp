@@ -1,4 +1,4 @@
-package com.razacx.web.handler;
+package com.razacx.web.handler.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

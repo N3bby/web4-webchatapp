@@ -1,6 +1,7 @@
-package com.razacx.web.handler;
+package com.razacx.web.handler.page;
 
 import com.razacx.domain.model.Person;
+import com.razacx.domain.model.Topic;
 import com.razacx.domain.service.concrete.DomainServiceHolder;
 import com.razacx.web.Action;
 import com.razacx.web.ActionHandler;
@@ -10,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Action(value = "changeStatus", requiresLoggedIn = true)
-public class ChangeStatusHandler extends ActionHandler {
+@Action(value = "topic", requiresLoggedIn = true)
+public class TopicHandler extends ActionHandler {
 
-    public ChangeStatusHandler(DomainServiceHolder serviceHolder) {
+    public TopicHandler(DomainServiceHolder serviceHolder) {
         super(serviceHolder);
     }
 
@@ -21,19 +22,15 @@ public class ChangeStatusHandler extends ActionHandler {
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Person person = (Person) request.getSession().getAttribute("person");
-        if (person == null) {
-            redirect(response, "Controller?action=requestLogin");
-        }
+        request.setAttribute("person", person);
 
-        String status = request.getParameter("status");
+        String topicStr = request.getParameter("topic");
+        Topic topic = getServiceHolder().getTopicService().getTopicByName(topicStr);
+        
+        request.setAttribute("topic", topic);
+        request.setAttribute("messages", topic.getMessages());
 
-        try {
-            person.setStatus(status);
-        } catch (Exception e) {
-            //TODO set status error handling
-            throw new RuntimeException(e);
-        }
-
+        forward(request, response, "topic.jsp");
     }
 
 }

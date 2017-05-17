@@ -1,4 +1,4 @@
-package com.razacx.web.handler;
+package com.razacx.web.handler.page;
 
 import com.razacx.domain.model.Person;
 import com.razacx.domain.service.concrete.DomainServiceHolder;
