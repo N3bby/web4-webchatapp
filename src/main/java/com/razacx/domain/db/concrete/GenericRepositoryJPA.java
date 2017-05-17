@@ -20,7 +20,7 @@ import java.util.function.Function;
 
 public class GenericRepositoryJPA<T> implements IGenericRepository<T> {
 
-    private EntityManagerFactory emf;
+    private static EntityManagerFactory emf;
     private Class<T> entityClass;
 
     public GenericRepositoryJPA(Class<T> entityClass, String persistenceUnit) {
