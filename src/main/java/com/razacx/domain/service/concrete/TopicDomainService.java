@@ -21,6 +21,12 @@ public class TopicDomainService implements ITopicService {
     public TopicDomainService(Properties properties) {
         topicRepository = new GenericRepositoryFactory<Topic>()
                 .getRepository((String) properties.get("dbType"), Topic.class);
+        
+        //Add default topics
+        addTopic(new Topic("Topic 1"));
+        addTopic(new Topic("Topic 2"));
+        addTopic(new Topic("Topic 3"));
+        
     }
 
     @Override
@@ -31,7 +37,7 @@ public class TopicDomainService implements ITopicService {
     @Override
     public Topic getTopicByName(String name) {
         return topicRepository.query((IJPACriteriaQuerySpecification) cb -> {
-            CriteriaQuery<Object> query = cb.createQuery();
+            CriteriaQuery<Topic> query = cb.createQuery(Topic.class);
             Root<Topic> root = query.from(Topic.class);
             query.where(cb.equal(root.get("name"), name));
             return query;
@@ -40,7 +46,11 @@ public class TopicDomainService implements ITopicService {
 
     @Override
     public List<Topic> getAllTopics() {
-        return topicRepository.queryList((IJPACriteriaQuerySpecification) CriteriaBuilder::createQuery);
+        return topicRepository.queryList((IJPACriteriaQuerySpecification) cb -> {
+            CriteriaQuery<Topic> query = cb.createQuery(Topic.class);
+            query.from(Topic.class);
+            return query;
+        });
     }
 
     @Override

@@ -17,6 +17,11 @@ public class PersonDomainService implements IPersonService {
     public PersonDomainService(Properties properties) {
         personRepository = new GenericRepositoryFactory<Person>()
                 .getRepository((String) properties.get("dbType"), Person.class);
+        
+        //Add default people
+        addPerson(new Person("abc", "123"));
+        addPerson(new Person("def", "123"));
+        
     }
 
     @Override
@@ -27,7 +32,7 @@ public class PersonDomainService implements IPersonService {
     @Override
     public Person getPerson(String username) {
         return personRepository.query((IJPACriteriaQuerySpecification) cb -> {
-            CriteriaQuery<Object> query = cb.createQuery();
+            CriteriaQuery<Person> query = cb.createQuery(Person.class);
             Root<Person> root = query.from(Person.class);
             query.where(cb.equal(root.get("username"), username));
             return query;
