@@ -20,8 +20,11 @@ public class LogoutHandler extends ActionHandler {
     @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Person person = (Person) request.getSession().getAttribute("person");
+        String username = (String) request.getSession().getAttribute("person");        
+        Person person = getServiceHolder().getPersonService().getPerson(username);
+        
         person.setStatus("Offline");
+        getServiceHolder().getPersonService().updatePerson(person);
 
         request.getSession().invalidate();
         redirect(response, "Controller?action=requestLogin");

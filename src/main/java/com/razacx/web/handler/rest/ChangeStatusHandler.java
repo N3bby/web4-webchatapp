@@ -20,17 +20,15 @@ public class ChangeStatusHandler extends ActionHandler {
     @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Person person = (Person) request.getSession().getAttribute("person");
-        if (person == null) {
-            redirect(response, "Controller?action=requestLogin");
-        }
+        String username = (String) request.getSession().getAttribute("person");
+        Person person = getServiceHolder().getPersonService().getPerson(username);
 
         String status = request.getParameter("status");
 
         try {
             person.setStatus(status);
+            getServiceHolder().getPersonService().updatePerson(person);
         } catch (Exception e) {
-            //TODO set status error handling
             throw new RuntimeException(e);
         }
 

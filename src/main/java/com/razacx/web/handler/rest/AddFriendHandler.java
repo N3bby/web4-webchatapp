@@ -20,16 +20,15 @@ public class AddFriendHandler extends ActionHandler {
     @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Person person = (Person) request.getSession().getAttribute("person");
-        if (person == null) {
-            redirect(response, "Controller?action=requestLogin");
-        }
+        String username = (String) request.getSession().getAttribute("person");
+        Person person = getServiceHolder().getPersonService().getPerson(username);
 
         String friendUsername = request.getParameter("username");
         Person friend = getServiceHolder().getPersonService().getPerson(friendUsername);
 
         try {
             person.addFriend(friend);
+            getServiceHolder().getPersonService().updatePerson(person);
         } catch (NullPointerException e) {
             response.getWriter().write("User does not exist");
         } catch (IllegalArgumentException e) {

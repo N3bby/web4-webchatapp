@@ -39,8 +39,8 @@ public abstract class ActionHandler {
 
     //Returns true if redirected
     private boolean redirectIfNotLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Person person = (Person) request.getSession().getAttribute("person");
-        if (person == null) {
+        String username = (String) request.getSession().getAttribute("person");        
+        if (username == null) {
             redirect(response, "Controller?action=requestLogin");
             return true;
         }

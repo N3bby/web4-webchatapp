@@ -32,8 +32,9 @@ public class LoginHandler extends ActionHandler {
             errors.add("Invalid username or password");
         } else {
             if (person.passwordMatches(password)) {
-                request.getSession().setAttribute("person", person);
+                request.getSession().setAttribute("person", person.getUsername());
                 person.setStatus("Online");
+                getServiceHolder().getPersonService().updatePerson(person);
                 redirect(response, "Controller?action=index");
                 return;
             } else {

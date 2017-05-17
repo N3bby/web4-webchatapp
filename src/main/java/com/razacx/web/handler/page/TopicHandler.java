@@ -21,7 +21,10 @@ public class TopicHandler extends ActionHandler {
     @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Person person = (Person) request.getSession().getAttribute("person");
+        String username = (String) request.getSession().getAttribute("person");
+        Person person = getServiceHolder().getPersonService().getPerson(username);
+        
+        
         request.setAttribute("person", person);
 
         String topicStr = request.getParameter("topic");

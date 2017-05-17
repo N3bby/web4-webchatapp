@@ -18,7 +18,10 @@ public class IndexHandler extends ActionHandler {
     }
 
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Person person = (Person) request.getSession().getAttribute("person");
+        
+        String username = (String) request.getSession().getAttribute("person");
+        Person person = getServiceHolder().getPersonService().getPerson(username);
+        
         request.setAttribute("person", person);
         request.setAttribute("topics", getServiceHolder().getTopicService().getAllTopics());
         forward(request, response, "index.jsp");

@@ -23,8 +23,9 @@ public class GetFriendsHandler extends ActionHandler {
     @Override
     public void handleImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Person person = (Person) request.getSession().getAttribute("person");
-
+        String username = (String) request.getSession().getAttribute("person");
+        Person person = getServiceHolder().getPersonService().getPerson(username);
+        
         List<Person> friends = person.getFriends();
 
         Gson gson = new GsonBuilder()

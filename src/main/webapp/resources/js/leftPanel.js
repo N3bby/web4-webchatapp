@@ -69,7 +69,7 @@ function updateStatus() {
 
     //Commit new status
     var request = new XMLHttpRequest();
-    request.open("POST", "Controller?action=updateStatus", true);
+    request.open("POST", "Controller?action=changeStatus", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.overrideMimeType("text/plain");
     request.send("status=" + status);
