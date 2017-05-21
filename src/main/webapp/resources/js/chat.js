@@ -22,14 +22,14 @@ function openSocket() {
 function onMessage(event) {
 
     var message = JSON.parse(event.data);
-
+    
     var messageDiv =
         "<div class='message'>" +
-            "<span class='message_sender'>" + message.user + "</span> - " +
+            "<span class='message_sender'>" + message.from.username + "</span> - " +
             "<span class='message_content'>" + message.message + "</span>" +
         "</div>";
 
-    //Hacky lol
+    //Add messageDiv to messagesPanel and scroll to top of panel
     var messagesPanel = document.getElementsByClassName("messagesPanel")[0];
     messagesPanel.innerHTML += messageDiv;
     messagesPanel.scrollTop = messagesPanel.scrollHeight;

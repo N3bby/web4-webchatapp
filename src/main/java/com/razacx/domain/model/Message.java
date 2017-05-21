@@ -13,7 +13,7 @@ public class Message {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
 
     @NotNull    
     @Temporal(TemporalType.TIMESTAMP)
@@ -78,12 +78,12 @@ public class Message {
 
         Message message = (Message) o;
 
-        return id.equals(message.id);
+        return id == message.id;
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return (int) (id ^ (id >>> 32));
     }
-
+    
 }

@@ -9,7 +9,7 @@ public class ChatSocketConfigurator extends ServerEndpointConfig.Configurator {
 
     @Override
     public void modifyHandshake(ServerEndpointConfig sec, HandshakeRequest request, HandshakeResponse response) {
-        //Set Person from session to ServerEndpointConfig attributes
+        //Add person that did the request to ServerEndpointConfig
         HttpSession httpSession = (HttpSession) request.getHttpSession();
         sec.getUserProperties().put("person", httpSession.getAttribute("person"));
     }

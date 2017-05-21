@@ -8,6 +8,8 @@ public interface ITopicService {
 
     void addTopic(Topic topic);
 
+    void updateTopic(Topic topic);
+    
     Topic getTopicByName(String name);
     List<Topic> getAllTopics();
 
