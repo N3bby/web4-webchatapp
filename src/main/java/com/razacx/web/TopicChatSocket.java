@@ -2,7 +2,6 @@ package com.razacx.web;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
 import com.razacx.domain.model.Message;
 import com.razacx.domain.model.Person;
 import com.razacx.domain.model.Topic;
@@ -15,8 +14,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@ServerEndpoint(value = "/chat/{topic}", configurator = ChatSocketConfigurator.class)
-public class ChatSocket {
+@ServerEndpoint(value = "/topicchat/{topic}", configurator = ChatSocketUserConfigurator.class)
+public class TopicChatSocket {
 
     private static Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
 

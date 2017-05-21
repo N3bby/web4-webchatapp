@@ -12,7 +12,7 @@ var chatSocket;
 function openSocket() {
 
     var topic = document.getElementById("topicIdentifier").innerText;
-    chatSocket = new WebSocket("ws://" + location.host + "/chat/" + topic);
+    chatSocket = new WebSocket("ws://" + location.host + "/topicchat/" + topic);
 
     //Register event handlers
     chatSocket.onmessage = onMessage;
