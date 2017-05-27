@@ -26,9 +26,7 @@ body {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     min-width: 300px;
-    max-height: 200px;
     width: 25%;
-    /*transform: translateY(-50%);*/
 }
 
 #loginPanel form {
@@ -49,6 +47,28 @@ body {
     margin: auto;
     width: 100%;
     margin-bottom: 10px;
+}
+
+#loginPanel input[type=radio] {
+    box-shadow: none;
+    width: auto;
+    display: inline-block!important;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#loginPanel input[type='submit'][value='Register'] {
+    margin-top: 10px;
+}
+
+#loginPanel h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+#loginPanel label {
+    display: inline-block;
+    color: white;
 }
 
 #loginPanel input:focus {
@@ -393,4 +413,34 @@ ul.errors li {
     margin-bottom: 2px;
 }
 
+#loginRegisterNav {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    background: rgb(60, 60, 144);
+    padding: 10px;    
+}
 
+#loginRegisterNav a {
+    color: white;
+    margin-right: 15px;
+}
+
+#loginRegisterNav a:last-child { 
+    margin-right: auto;
+}
+
+.navActive {
+    color : darkgray!important;
+    text-decoration: none;
+}
+
+#logoutButton {
+    position: absolute;
+    top:10px;
+    left:10px;
+    color: white!important;
+    text-decoration: underline;
+    z-index: 1000;
+}

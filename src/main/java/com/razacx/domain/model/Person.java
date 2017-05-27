@@ -5,16 +5,33 @@ import com.google.gson.annotations.Expose;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Person {
 
+    public enum Gender {
+        MALE,
+        FEMALE
+    }
+    
     @Id
     @NotNull
     @Expose
     private String username;
 
+    @NotNull
+    @Expose
+    private String email;
+    
+    @NotNull
+    @Expose
+    private Date birthDate;
+        
+    @Expose
+    private Gender gender;
+    
     @NotNull
     private String password;
 
@@ -26,19 +43,20 @@ public class Person {
     private List<Person> friends = new ArrayList<>();
 
     public Person() {
+        this.status = "Offline";
     }
 
     public Person(String username, String password) {
+        this();
         setUsername(username);
         setPassword(password);
-        status = "Offline";
     }
 
     public String getUsername() {
         return username;
     }
 
-    private void setUsername(String username) {
+    public void setUsername(String username) {
         if(username == null || username.trim().isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
         this.username = username;
     }
@@ -47,7 +65,7 @@ public class Person {
         return password;
     }
 
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -76,6 +94,30 @@ public class Person {
 
     public List<Person> getFriends() {
         return new ArrayList<>(friends);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     @Override

@@ -24,4 +24,5 @@
             <input type="submit" value="Add Friend">
         </form>
     </div>
+    <a href="Controller?action=logout" id="logoutButton">Log Out</a>
 </div>

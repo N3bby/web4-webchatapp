@@ -8,6 +8,10 @@
 <body>
 <main>
     <div id="loginBackground"></div>
+    <div id="loginRegisterNav">
+        <a href="Controller?action=requestLogin" class="navActive">Login</a>
+        <a href="Controller?action=requestRegister">Register</a>
+    </div>
     <div id="loginPanel">
         <form action="Controller" method="post">
             <c:if test="${not empty errors}">
@@ -24,7 +28,7 @@
         </form>
     </div>
     <div id="defaultAccountsPanel">
-        <h2>Default accounts</h2>        
+        <h2>Defaults</h2>        
         <p>abc | 123</p>
         <p>def | 123</p>
         <p>ghi | 123</p>
