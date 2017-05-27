@@ -26,7 +26,6 @@
             <input id="password" name="password" type="password" placeholder="Password">
             <input id="re-type_password" name="re-type_password" type="password" placeholder="Re-type password">
             <input id="username" name="email" type="text" placeholder="Email" value="${err_email}">
-            <input id="birthdate" name="birthdate" type="date" placeholder="Birthdate" value="${err_birthdate}">
             <h3>Gender</h3>
             <input type="radio" id="radio_gender_male" name="gender" value="male" checked> <label for="radio_gender_male">Male</label><br>
             <input type="radio" id="radio_gender_female" name="gender" value="female"> <label for="radio_gender_female">Female</label>

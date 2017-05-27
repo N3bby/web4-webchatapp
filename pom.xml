@@ -64,6 +64,13 @@
             <version>${hsqldb.version}</version>
         </dependency>
 
+        <!-- Jodatime -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.6</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

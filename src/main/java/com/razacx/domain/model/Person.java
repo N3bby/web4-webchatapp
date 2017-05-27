@@ -24,10 +24,6 @@ public class Person {
     @NotNull
     @Expose
     private String email;
-    
-    @NotNull
-    @Expose
-    private Date birthDate;
         
     @Expose
     private Gender gender;
@@ -50,6 +46,12 @@ public class Person {
         this();
         setUsername(username);
         setPassword(password);
+    }
+
+    public Person(String username, String email, Gender gender, String password) {
+        this(username, password);
+        setEmail(email);
+        setGender(gender);
     }
 
     public String getUsername() {
@@ -102,14 +104,6 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
     }
 
     public Gender getGender() {

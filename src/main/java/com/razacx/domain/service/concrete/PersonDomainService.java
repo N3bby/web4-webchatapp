@@ -5,9 +5,13 @@ import com.razacx.domain.db.factory.GenericRepositoryFactory;
 import com.razacx.domain.db.specification.IJPACriteriaQuerySpecification;
 import com.razacx.domain.model.Person;
 import com.razacx.domain.service.IPersonService;
+import org.joda.time.DateTime;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 public class PersonDomainService implements IPersonService {
@@ -19,9 +23,9 @@ public class PersonDomainService implements IPersonService {
                 .getRepository((String) properties.get("dbType"), Person.class);
         
         //Add default people
-        addPerson(new Person("abc", "123"));
-        addPerson(new Person("def", "123"));
-        addPerson(new Person("ghi", "123"));
+        addPerson(new Person("abc", "abc@system.me", Person.Gender.MALE, "123"));
+        addPerson(new Person("def", "def@system.me", Person.Gender.FEMALE, "123"));
+        addPerson(new Person("ghi", "ghi@system.me", Person.Gender.MALE, "123"));        
         
     }
 
@@ -38,6 +42,23 @@ public class PersonDomainService implements IPersonService {
             query.where(cb.equal(root.get("username"), username));
             return query;
         });
+    }
+
+    @Override
+    public List<Person> getAllPersons() {
+        
+        return personRepository.queryList(new IJPACriteriaQuerySpecification() {
+            @Override
+            public CriteriaQuery toCriteriaQuery(CriteriaBuilder cb) {
+                
+                CriteriaQuery<Person> query = cb.createQuery(Person.class);
+                Root<Person> root = query.from(Person.class);
+                
+                return query;
+                
+            }
+        });
+        
     }
 
     @Override

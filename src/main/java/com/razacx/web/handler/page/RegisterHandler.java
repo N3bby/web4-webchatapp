@@ -34,12 +34,10 @@ public class RegisterHandler extends ActionHandler {
         String password = request.getParameter("password");
         String password2 = request.getParameter("re-type_password");
         String email = request.getParameter("email");
-        String birthDate = request.getParameter("birthdate");
         String gender = request.getParameter("gender");
 
         request.setAttribute("err_username", username);
         request.setAttribute("err_email", email);
-        request.setAttribute("err_birthdate", birthDate);
 
         List<String> errors = new ArrayList<>();
 
@@ -48,12 +46,6 @@ public class RegisterHandler extends ActionHandler {
         }
         if (!validateEmail(email)) {
             errors.add("Invalid email address");
-        }
-        Date date = null;
-        try {
-            date = new SimpleDateFormat("yyyy-MM-dd").parse(birthDate);
-        } catch (ParseException e) {
-            errors.add("Invalid birthdate");
         }
         Person.Gender genderVal = Person.Gender.valueOf(gender.toUpperCase());
 
@@ -69,7 +61,6 @@ public class RegisterHandler extends ActionHandler {
                 person.setUsername(username);
                 person.setPassword(password);
                 person.setEmail(email);
-                person.setBirthDate(date);
                 person.setGender(genderVal);
                 getServiceHolder().getPersonService().addPerson(person);
                 response.sendRedirect("Controller?action=requestLogin");
