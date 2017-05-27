@@ -13,6 +13,7 @@ public class Message {
 
     @Id
     @GeneratedValue
+    @Expose
     private long id;
 
     @NotNull    
@@ -31,10 +32,11 @@ public class Message {
     private String message;
 
     public Message() {
+        setDate(Calendar.getInstance().getTime());
     }
 
     public Message(Person from, String message) {
-        setDate(Calendar.getInstance().getTime());
+        this();
         setFrom(from);
         setMessage(message);
     }

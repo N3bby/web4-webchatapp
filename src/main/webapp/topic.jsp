@@ -5,6 +5,7 @@
     <title>Chat - ${topic.name}</title>
     <link rel="stylesheet" type="text/css" href="resources/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="resources/js/privateChat.js"></script>
     <script src="resources/js/leftPanel.js"></script>
     <script src="resources/js/chat.js"></script>
     <div id="topicIdentifier" style="display: none;">${topic.name}</div>
@@ -29,6 +30,7 @@
             <input id="addMessageForm_send" type="submit" value="Send">
         </form>
     </div>
+    <div id="pmWindowContainer"></div>
 </main>
 
 </body>

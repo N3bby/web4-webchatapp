@@ -14,8 +14,11 @@ public interface IMessageService {
     void updateMessage(Message message);
 
     List<PrivateMessage> getPrivateMessagesBetween(Person p1, Person p2);
-    List<PrivateMessage> getPrivateMessagesBetween(Person p1, Person p2, int from, int limit);
 
+    List<PrivateMessage> getPrivateMessagesFor(Person p);
+    
+    Message getMessageById(long id);
+    
     void removeMessage(Message message);
 
     void close();

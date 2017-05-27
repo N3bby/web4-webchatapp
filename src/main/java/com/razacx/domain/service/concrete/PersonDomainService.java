@@ -21,6 +21,7 @@ public class PersonDomainService implements IPersonService {
         //Add default people
         addPerson(new Person("abc", "123"));
         addPerson(new Person("def", "123"));
+        addPerson(new Person("ghi", "123"));
         
     }
 

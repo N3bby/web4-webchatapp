@@ -5,6 +5,7 @@
     <title>Chat</title>
     <link rel="stylesheet" type="text/css" href="resources/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="resources/js/privateChat.js"></script>
     <script src="resources/js/leftPanel.js"></script>
 </head>
 <body>
@@ -20,6 +21,7 @@
             </a>
         </c:forEach>
     </div>
+    <div id="pmWindowContainer"></div>
 </main>
 
 </body>

@@ -18,7 +18,6 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.function.Function;
 
 public class MessageDomainService implements IMessageService {
 
@@ -59,13 +58,13 @@ public class MessageDomainService implements IMessageService {
             );
 
             query.where(where);
-            query.orderBy(cb.desc(root.get("date")));
+            query.orderBy(cb.asc(root.get("date")));
 
             return query;
 
         });
 
-        //Need to cast manually since java is a b****
+        //Need to cast manually because java
         List<PrivateMessage> result = new ArrayList<>(messages.size());
         for (Message m : messages) {
             try {
@@ -79,37 +78,23 @@ public class MessageDomainService implements IMessageService {
     }
 
     @Override
-    public List<PrivateMessage> getPrivateMessagesBetween(Person p1, Person p2, int from, int limit) {
+    public List<PrivateMessage> getPrivateMessagesFor(Person p) {
 
-        List<Message> messages = messageRepository.queryList((IJPAFunctionSpecification) () -> (EntityManager em) -> {
+        List<Message> messages = messageRepository.queryList(new IJPACriteriaQuerySpecification() {
+            @Override
+            public CriteriaQuery toCriteriaQuery(CriteriaBuilder cb) {
 
-            CriteriaBuilder cb = em.getCriteriaBuilder();
+                CriteriaQuery<PrivateMessage> query = cb.createQuery(PrivateMessage.class);
+                Root<PrivateMessage> root = query.from(PrivateMessage.class);
 
-            CriteriaQuery<PrivateMessage> query = cb.createQuery(PrivateMessage.class);
-            Root<PrivateMessage> root = query.from(PrivateMessage.class);
+                query.where(cb.equal(root.get("to"), p));
 
-            Predicate where = cb.or(
-                    cb.and(
-                            cb.equal(root.get("from"), p1),
-                            cb.equal(root.get("to"), p2)
-                    ),
-                    cb.and(
-                            cb.equal(root.get("from"), p2),
-                            cb.equal(root.get("to"), p1)
-                    )
-            );
+                return query;
 
-            query.where(where);
-            query.orderBy(cb.desc(root.get("date")));
-
-            return em.createQuery(query)
-                     .setFirstResult(from)
-                     .setMaxResults(limit)
-                     .getResultList();
-
+            }
         });
 
-        //Need to cast manually since java is a b****
+        //Need to cast manually because java
         List<PrivateMessage> result = new ArrayList<>(messages.size());
         for (Message m : messages) {
             try {
@@ -119,7 +104,26 @@ public class MessageDomainService implements IMessageService {
             }
         }
         return result;
+        
+    }
 
+    @Override
+    public Message getMessageById(long id) {
+        
+        return messageRepository.query(new IJPACriteriaQuerySpecification() {
+            @Override
+            public CriteriaQuery toCriteriaQuery(CriteriaBuilder cb) {
+
+                CriteriaQuery<Message> query = cb.createQuery(Message.class);
+                Root<Message> root = query.from(Message.class);
+                
+                query.where(cb.equal(root.get("id"), id));
+                
+                return query;
+
+            }
+        });
+        
     }
 
     @Override

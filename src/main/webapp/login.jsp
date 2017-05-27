@@ -23,6 +23,12 @@
             <input id="loginSubmit" type="submit" value="Login">
         </form>
     </div>
+    <div id="defaultAccountsPanel">
+        <h2>Default accounts</h2>        
+        <p>abc | 123</p>
+        <p>def | 123</p>
+        <p>ghi | 123</p>
+    </div>
 </main>
 </body>
 </html>

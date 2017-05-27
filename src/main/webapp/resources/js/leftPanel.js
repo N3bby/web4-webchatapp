@@ -1,4 +1,4 @@
-$(document).ready( function () {
+$(document).ready(function () {
 
     console.log("leftPanel.js");
 
@@ -25,6 +25,12 @@ function pollFriends() {
             for (var i = 0; i < friends.length; i++) {
                 var friendLi = document.createElement("li");
                 friendLi.innerHTML = friends[i].username + " - " + friends[i].status;
+                var username = friends[i].username;
+                friendLi.onclick = (function (username) { //What the actual ...
+                    return function() {  
+                        createPrivateChat(username);
+                    }
+                })(username);
                 friendsUl.appendChild(friendLi);
             }
         }
@@ -89,8 +95,8 @@ function addFriend(evt) {
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.overrideMimeType("text/plain");
     request.onreadystatechange = function () { //Show errors in alert window
-        if(request.readyState === 4) {
-            if(request.responseText !== "") {
+        if (request.readyState === 4) {
+            if (request.responseText !== "") {
                 window.alert(request.responseText);
             }
         }
